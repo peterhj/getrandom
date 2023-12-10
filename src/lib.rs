@@ -12,29 +12,29 @@
 //!
 //! | Target            | Target Triple      | Implementation
 //! | ----------------- | ------------------ | --------------
-//! | Linux, Android    | `*‑linux‑*`        | [`getrandom`][1] system call if available, otherwise [`/dev/urandom`][2] after successfully polling `/dev/random`
-//! | Windows           | `*‑windows‑*`      | [`BCryptGenRandom`]
-//! | macOS             | `*‑apple‑darwin`   | [`getentropy`][3] if available, otherwise [`/dev/urandom`][4] (identical to `/dev/random`)
-//! | iOS, tvOS, watchOS | `*‑apple‑ios`, `*-apple-tvos`, `*-apple-watchos` | [`SecRandomCopyBytes`]
-//! | FreeBSD           | `*‑freebsd`        | [`getrandom`][5] if available, otherwise [`kern.arandom`][6]
-//! | OpenBSD           | `*‑openbsd`        | [`getentropy`][7]
-//! | NetBSD            | `*‑netbsd`         | [`getrandom`][16] if available, otherwise [`kern.arandom`][8]
-//! | Dragonfly BSD     | `*‑dragonfly`      | [`getrandom`][9] if available, otherwise [`/dev/urandom`][10] (identical to `/dev/random`)
-//! | Solaris, illumos  | `*‑solaris`, `*‑illumos` | [`getrandom`][11] if available, otherwise [`/dev/random`][12]
-//! | Fuchsia OS        | `*‑fuchsia`        | [`cprng_draw`]
-//! | Redox             | `*‑redox`          | `/dev/urandom`
-//! | Haiku             | `*‑haiku`          | `/dev/urandom` (identical to `/dev/random`)
+//! | Linux, Android    | `*-linux-*`        | [`getrandom`][1] system call if available, otherwise [`/dev/urandom`][2] after successfully polling `/dev/random`
+//! | Windows           | `*-windows-*`      | [`BCryptGenRandom`]
+//! | macOS             | `*-apple-darwin`   | [`getentropy`][3] if available, otherwise [`/dev/urandom`][4] (identical to `/dev/random`)
+//! | iOS, tvOS, watchOS | `*-apple-ios`, `*-apple-tvos`, `*-apple-watchos` | [`SecRandomCopyBytes`]
+//! | FreeBSD           | `*-freebsd`        | [`getrandom`][5] if available, otherwise [`kern.arandom`][6]
+//! | OpenBSD           | `*-openbsd`        | [`getentropy`][7]
+//! | NetBSD            | `*-netbsd`         | [`getrandom`][16] if available, otherwise [`kern.arandom`][8]
+//! | Dragonfly BSD     | `*-dragonfly`      | [`getrandom`][9] if available, otherwise [`/dev/urandom`][10] (identical to `/dev/random`)
+//! | Solaris, illumos  | `*-solaris`, `*-illumos` | [`getrandom`][11] if available, otherwise [`/dev/random`][12]
+//! | Fuchsia OS        | `*-fuchsia`        | [`cprng_draw`]
+//! | Redox             | `*-redox`          | `/dev/urandom`
+//! | Haiku             | `*-haiku`          | `/dev/urandom` (identical to `/dev/random`)
 //! | Hermit            | `*-hermit`         | [`sys_read_entropy`]
-//! | SGX               | `x86_64‑*‑sgx`     | [`RDRAND`]
-//! | VxWorks           | `*‑wrs‑vxworks‑*`  | `randABytes` after checking entropy pool initialization with `randSecure`
-//! | ESP-IDF           | `*‑espidf`         | [`esp_fill_random`]
-//! | Emscripten        | `*‑emscripten`     | [`getentropy`][13]
-//! | WASI              | `wasm32‑wasi`      | [`random_get`]
-//! | Web Browser and Node.js | `wasm*‑*‑unknown` | [`Crypto.getRandomValues`] if available, then [`crypto.randomFillSync`] if on Node.js, see [WebAssembly support]
+//! | SGX               | `x86_64-*-sgx`     | [`RDRAND`]
+//! | VxWorks           | `*-wrs-vxworks-*`  | `randABytes` after checking entropy pool initialization with `randSecure`
+//! | ESP-IDF           | `*-espidf`         | [`esp_fill_random`]
+//! | Emscripten        | `*-emscripten`     | [`getentropy`][13]
+//! | WASI              | `wasm32-wasi`      | [`random_get`]
+//! | Web Browser and Node.js | `wasm*-*-unknown` | [`Crypto.getRandomValues`] if available, then [`crypto.randomFillSync`] if on Node.js, see [WebAssembly support]
 //! | SOLID             | `*-kmc-solid_*`    | `SOLID_RNG_SampleRandomBytes`
 //! | Nintendo 3DS      | `armv6k-nintendo-3ds` | [`getrandom`][1]
 //! | PS Vita           | `armv7-sony-vita-newlibeabihf` | [`getentropy`][13]
-//! | QNX Neutrino      | `*‑nto-qnx*`          | [`/dev/urandom`][14] (identical to `/dev/random`)
+//! | QNX Neutrino      | `*-nto-qnx*`          | [`/dev/urandom`][14] (identical to `/dev/random`)
 //! | AIX               | `*-ibm-aix`        | [`/dev/urandom`][15]
 //!
 //! There is no blanket implementation on `unix` targets that reads from

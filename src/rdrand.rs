@@ -21,9 +21,9 @@ cfg_if! {
     }
 }
 
-// Recommendation from "Intel® Digital Random Number Generator (DRNG) Software
-// Implementation Guide" - Section 5.2.1 and "Intel® 64 and IA-32 Architectures
-// Software Developer’s Manual" - Volume 1 - Section 7.3.17.1.
+// Recommendation from "Intel(R) Digital Random Number Generator (DRNG) Software
+// Implementation Guide" - Section 5.2.1 and "Intel(R) 64 and IA-32 Architectures
+// Software Developer's Manual" - Volume 1 - Section 7.3.17.1.
 const RETRY_LIMIT: usize = 10;
 
 #[target_feature(enable = "rdrand")]
